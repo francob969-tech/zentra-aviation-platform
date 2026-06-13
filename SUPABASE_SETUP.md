@@ -32,30 +32,15 @@ variables.
 | `notes`        | text (null)   | notas internas del operador                      |
 
 ## 3. SQL para crear la tabla
-En el proyecto: **SQL Editor → New query**, pegá esto y **Run**:
 
-```sql
-create table public.leads (
-  id uuid primary key,
-  created_at timestamptz not null default now(),
-  dep_code text not null,
-  dest_code text not null,
-  flight_date date not null,
-  return_date date,
-  pax int not null,
-  round_trip boolean not null default false,
-  requirements text,
-  nombre text not null,
-  whatsapp text not null,
-  status text not null default 'nuevo',
-  notes text
-);
+> **Fuente de verdad: [`supabase/schema.sql`](supabase/schema.sql).**
+> No copies SQL suelto de acá: abrí ese archivo, copiá **todo** su contenido y
+> pegalo en **SQL Editor → New query → Run**. Es idempotente (se puede correr
+> varias veces) e incluye tabla, índice, RLS y el constraint de estado.
+> Documentación del directorio: [`supabase/README.md`](supabase/README.md).
 
--- La app accede SOLO con la service key (lado servidor). Activamos RLS y no
--- creamos políticas públicas: así nadie puede leer la tabla con la clave
--- anónima del navegador. La service key bypassea RLS por diseño.
-alter table public.leads enable row level security;
-```
+La tabla de la sección 2 es solo de referencia; el esquema ejecutable y
+versionado vive en `supabase/schema.sql`, alineado 1:1 con `lib/leads-store.ts`.
 
 ## 4. Variables de entorno requeridas
 En el proyecto: **Settings → API**. Copiá:
