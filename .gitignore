@@ -1,0 +1,42 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.*
+
+# Next.js build output
+/.next/
+/out/
+/build
+/.next_stale
+
+# Environment variables (NUNCA commitear — contienen secretos)
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.production.local
+
+# Almacén local de leads (datos de prueba, no va al repo)
+/.data/
+
+# Demo viejo "Jets & Props" apartado — no va al repo
+/_legacy/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.pem
+
+# Vercel / Netlify
+.vercel
+.netlify
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
